@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="echarts.js"></script>
+    <script src="./echarts/echarts.js"></script>
+    <!--echart使用在内联框架有白边，设置背景色与原型相同就行-->
+    <style type="text/css">
+    body {background-color: #374760;}
+    </style>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <!-- 内联框架白边为（r8px,l8px,t8px,b8px）内联框架取消滚动条和边框 -->
+    <div id="main" style="width: 104px;height:104px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+
+        // 指定图表的配置项和数据
+var dataStyle = {
+    normal: {
+        label: {show:false},
+        labelLine: {show:false}
+    }
+};
+var placeHolderStyle = {
+    normal : {
+        color: 'rgba(0,0,0,0)',
+        label: {show:false},
+        labelLine: {show:false}
+    },
+    emphasis : {
+        color: 'rgba(0,0,0,0)'
+    }
+};
+option = {
+    color: ['#da70d6','#32cd32','#6495ed',
+            '#ff69b4','#ba55d3','#cd5c5c','#ffa500','#40e0d0',
+            '#1e90ff','#ff6347','#7b68ee','#00fa9a','#ffd700',
+            '#6699FF','#ff6666','#3cb371','#b8860b','#30e0e0'],
+
+    title: {
+        text: '模式风险',
+        //subtext: 'From ExcelHome',
+        //sublink: 'http://e.weibo.com/1341556070/AhQXtjbqh',
+        x: 'center',
+        y: 'center',
+        itemGap: 8,
+        textStyle : {
+            color : 'rgba(30,144,255,0.8)',
+            fontFamily : '微软雅黑',
+            fontSize : 8,
+            fontWeight : 'bolder'
+        }
+    },
+    tooltip : {
+        show: true,
+        formatter: "{c}"
+    },
+    // legend: {
+    //     textStyle: {color: '#FFFFFF',fontSize : 2},
+    //     orient : 'vertical',
+    //     //x : document.getElementById('main').offsetWidth / 2,
+    //     //y : 45,
+    //     x:'center',
+    //     y:'bottom',
+    //     itemGap:8,
+    //     data:['收款模式风险','返款模式风险']
+    // },
+    // toolbox: {
+    //     show : true,
+    //     feature : {
+    //         mark : {show: true},
+    //         dataView : {show: true, readOnly: false},
+    //         restore : {show: true},
+    //         saveAsImage : {show: true}
+    //     }
+    // },
+    series : [
+        {
+            name:'1',
+            type:'pie',
+            clockWise:false,
+            radius : [40, 50],
+            itemStyle : dataStyle,
+            data:[
+                {
+                    value:77,
+                    name:'收款模式风险'
+                },
+                {
+                    value:23,
+                    name:'inv',
+                    itemStyle : placeHolderStyle
+                }
+            ]
+        },
+        {
+            name:'2',
+            type:'pie',
+            clockWise:false,
+            radius : [30, 40],
+            itemStyle : dataStyle,
+            data:[
+                {
+                    value:88, 
+                    name:'返款模式风险'
+                },
+                {
+                    value:12,
+                    name:'inv',
+                    itemStyle : placeHolderStyle
+                }
+            ]
+        },
+        // {
+        //     name:'3',
+        //     type:'pie',
+        //     clockWise:false,
+        //     radius : [75, 100],
+        //     itemStyle : dataStyle,
+        //     data:[
+        //         {
+        //             value:3, 
+        //             name:'3%的人表示“我姓曾”'
+        //         },
+        //         {
+        //             value:97,
+        //             name:'invisible',
+        //             itemStyle : placeHolderStyle
+        //         }
+        //     ]
+        // }
+    ]
+};
+                    
+                    
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
